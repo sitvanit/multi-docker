@@ -9,10 +9,10 @@ script:
   - docker run -e CI=true sitvanit/react-test npm run test -- --coverage
 
 after_success:
-  - docker build -t sivanit/multi-client ./client
-  - docker build -t sivanit/multi-nginx ./nginx
-  - docker build -t sivanit/multi-server ./server
-  - docker build -t sivanit/multi-worker ./worker
+  - docker build -t sitvanit/multi-client ./client
+  - docker build -t sitvanit/multi-nginx ./nginx
+  - docker build -t sitvanit/multi-server ./server
+  - docker build -t sitvanit/multi-worker ./worker
   # Log in to docker CLO
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to Dockerhub
