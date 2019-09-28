@@ -1,0 +1,33 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "sitvanit/multi-client",
+      "hostname": "client",
+      "essential": false
+    }, {
+      "name": "server",
+      "image": "sitvanit/multi-server",
+      "hostname": "api",
+      "essential": false
+    }, {
+      "name": "worker",
+      "image": "sitvanit/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    }, {
+      "name": "nginx,",
+      "image": "sitvanit/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappinga": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
